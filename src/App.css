@@ -1,38 +1,132 @@
 .App {
   text-align: center;
+  background-color: #222;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  background-color: #333;
+  color: #fff;
+  height: 100vh;
+  width: 15vw;
+  /* -webkit-app-region: drag; */
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navDiv{
+  cursor: pointer;
+  width: 15vw;
 }
+.navDiv:hover{
+  background-color: #444;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+}
+.newsBody{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 85vw;
+  height: 100vh;
+  overflow: scroll;
+  color: #fff;
+}
+.homeBody{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* background-color: aqua; */
+  width: 85vw;
+  height: 100vh;
+}
+.weatherDiv{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #333;
+  width: 80vw;
+  height: 40vh;
+  border-radius: 25px;
+}
+.weatherBody{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* background-color: antiquewhite; */
+  height: 45vh;
+  width: 78vw;
+}
+.location{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: aqua; */
+  width: 78vw;
+  height: 7vh;
+}
+.weatherMain{
+  display: flex;
+  flex-direction: row;
+  height: 39vh;
+  width: 78vw;
+  /* background-color: green; */
+}
+.newsBody::-webkit-scrollbar {
+  display: none;
+}
+.condition{
+  width: 30vw;
+  height: 39vh;
+  /* background-color: blueviolet; */
+}
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /* background-color: brown; */
+  height: 35vh;
+  width: 48vw;
+}
+.location h1{
+  padding: none;
+  margin: none;
 }
 
-.App-link {
-  color: #61dafb;
+.categoryHeader{
+  position: fixed;
+  background-color: aqua;
+  margin: none;
+  padding: none;
+  width: 85vw;
+  height: 10vh;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.article{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 5px;
+  border-radius: 25px;
+  width: 75vw;
+  min-height: 20vh;
+  background-color: #444;
+  margin-bottom: 1rem;
+}
+.headlineImg{
+  max-height: 70px;
+  width: auto;
 }
