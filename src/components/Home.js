@@ -6,6 +6,17 @@ export default function Home() {
 
 
     const [weather, setWeather] = useState([])
+    navigator.geolocation.getCurrentPosition(function(position) {
+        console.log("Latitude is :", position.coords.latitude);
+        console.log("Longitude is :", position.coords.longitude);
+      });
+
+    if ("geolocation" in navigator) {
+        console.log("Available");
+        
+      } else {
+        console.log("Not Available");
+      }
 
 
     useEffect(()=>{
@@ -18,15 +29,30 @@ export default function Home() {
               'x-rapidapi-key': 'd78d824a74msha8459d72a8c533fp15a11djsnd876654ebbc0'
             }
           };
-          
+
           axios.request(options)
           .then(function (response) {
               console.log(Object.keys(weather).length)
+              console.log('API ran outside interval function to get the weather')
                setWeather(response.data)
           })
           .catch(function (error) {
               console.error(error);
           });
+
+          setInterval(()=>{
+            axios.request(options)
+            .then(function (response) {
+                console.log(Object.keys(weather).length)
+                console.log('API ran to get the weather')
+                 setWeather(response.data)
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+          }, 300000)
+          
+          
     },[])
 
 
@@ -40,26 +66,14 @@ export default function Home() {
                         <div className="weatherMain">
                             <div className="condition">
                                 <h4>{weather.current.condition.text}</h4>
-                                <img src={weather.current.condition.icon} alt="weather_icon" />
+                                <img  src={weather.current.condition.icon} alt="weather_icon" />
                             </div>
                             <div className="info">
-                                <h2>Temp: {weather.current.temp_f}°F</h2>
-                                <h2>Feels Like:: {weather.current.feelslike_f}°F</h2>
+                                <p>Current Temperature: {weather.current.temp_f}°F</p>
+                                <p>Feels Like: {weather.current.feelslike_f}°F</p>
                             </div>
                         </div>
                     </div>
-                    {/* <h1>{weather.location.name}</h1>
-                    <div className='weatherBody'>
-                        <div>
-                            <img src={weather.current.condition.icon} alt="weather_icon" />
-                            <h4>Condition: {weather.current.condition.text}</h4>
-                        </div>
-                        <div>
-                            <h4>Temp: {weather.current.temp_f}°F</h4>
-                            <h4>Feels Like:: {weather.current.feelslike_f}°F</h4>
-                        </div>
-    
-                    </div> */}
                 </div>
             </div> : ''}
         </>
